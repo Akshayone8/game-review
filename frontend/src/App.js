@@ -25,11 +25,12 @@ const appRoute = createBrowserRouter([
   },
 ]);
 
-//apollo client
+//apollo client - client connection
 const client = new ApolloClient({
   uri: "http://localhost:1337/graphql", //entrypoint
   cache: new InMemoryCache(), //what type of cache that s in memory cache
 });
+
 function App() {
   return (
     <ApolloProvider client={client}>

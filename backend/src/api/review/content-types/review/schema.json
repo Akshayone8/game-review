@@ -15,17 +15,26 @@
     "title": {
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": true,
+      "pluginOptions": {}
     },
-    "rating": {
+    "review": {
       "type": "integer",
       "required": true,
+      "max": 10,
       "min": 1,
-      "max": 10
+      "pluginOptions": {}
     },
     "body": {
       "type": "blocks",
-      "required": true
+      "required": true,
+      "pluginOptions": {}
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "reviews"
     }
   }
 }
