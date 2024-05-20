@@ -3,6 +3,7 @@ import AppLayout from "./app-layout/AppLayou";
 import HomePage from "./pages/HomePage";
 import ReviewDetails from "./pages/ReviewDetails";
 import Categroy from "./pages/Categroy";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 const appRoute = createBrowserRouter([
   {
@@ -23,11 +24,19 @@ const appRoute = createBrowserRouter([
     ],
   },
 ]);
+
+//apollo client
+const client = new ApolloClient({
+  uri: "http://localhost:1337/graphql", //entrypoint
+  cache: new InMemoryCache(), //what type of cache that s in memory cache
+});
 function App() {
   return (
-    <div className="app">
-      <RouterProvider router={appRoute} />
-    </div>
+    <ApolloProvider client={client}>
+      <div className="app">
+        <RouterProvider router={appRoute} />
+      </div>
+    </ApolloProvider>
   );
 }
 
